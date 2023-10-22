@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <style>
+    
+        .footer-text {
+            font-size: 12px; 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 5px;
+        }
+    </style>
+    <!-- Bootstrap -->
+    <title>Mahasiswa</title>
+</head>
+
+<body class="container d-flex flex-column justify-content-center" style="min-height: 100vh">
+    <h1 class="text-center">Daftar Mahasiswa</h1>
+
+    <a href="/add" class="btn btn-success w-full mt-4">Tambah Mahasiswa</a>
+
+    <div class="mt-2">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Angkatan</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Asal Daerah</th>
+                    <th scope="col">No Telp</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mhs : ${mahasiswa}">
+                    <td th:text="${mhs.nama}"></td>
+                    <td th:text="${mhs.angkatan}"></td>
+                    <td th:text="${mhs.gender}"></td>
+                    <td th:text="${mhs.asal_daerah}"></td>
+                    <td th:text="${mhs.no_telp}"></td>
+                    <td>
+                        <a th:href="@{/edit/{nim}(nim=${mhs.nim})}" class="btn btn-primary">Edit</a>
+                        <a th:href="@{/delete/{nim}(nim=${mhs.nim})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/detail/{nim}(nim=${mhs.nim})}" class="btn btn-secondary">Lihat Detail</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap -->
+    <div class="footer-text">
+        <p>@tugasnyakel20</p>
+    </div>
+</body>
+</html>
